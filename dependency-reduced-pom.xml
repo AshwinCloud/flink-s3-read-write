@@ -26,7 +26,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>cloud.ashwin.S3ReadWriteExample</mainClass>
+                  <mainClass>cloud.ashwin.S3FlinkFilterJacksonville</mainClass>
                 </transformer>
               </transformers>
             </configuration>
