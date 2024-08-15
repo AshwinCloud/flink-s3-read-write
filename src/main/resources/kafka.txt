@@ -1,0 +1,51 @@
+kafka-topics --bootstrap-server localhost:9092 --delete --topic input_topic
+
+kafka-topics \
+--create \
+--topic input_topic \
+--bootstrap-server localhost:9092 \
+--partitions 1 \
+--replication-factor 1
+
+kafka-topics \
+--create \
+--topic output_topic \
+--bootstrap-server localhost:9092 \
+--partitions 1 \
+--replication-factor 1
+
+kafka-topics \
+--create \
+--topic output_topic_filtered \
+--bootstrap-server localhost:9092 \
+--partitions 1 \
+--replication-factor 1
+
+kafka-console-producer \
+--topic input_topic \
+--bootstrap-server localhost:9092
+
+cat src/main/resources/input.json | \
+kafka-console-producer \
+--topic input_topic \
+--bootstrap-server localhost:9092
+
+cat src/main/resources/input_escaped.json | \
+kafka-console-producer \
+--topic input_topic \
+--bootstrap-server localhost:9092
+
+kafka-console-consumer \
+--topic input_topic \
+--bootstrap-server localhost:9092 \
+--from-beginning
+
+kafka-console-consumer \
+--topic output_topic \
+--bootstrap-server localhost:9092 \
+--from-beginning
+
+kafka-console-consumer \
+--topic output_topic_filtered \
+--bootstrap-server localhost:9092 \
+--from-beginning

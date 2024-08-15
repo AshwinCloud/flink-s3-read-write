@@ -86,4 +86,4 @@ public class S3FlinkAverageSalaryByCity {
             return String.format("%s,%.2f,%d", value.f0, averageSalary, value.f2);
         }
     }
-}}
+}
